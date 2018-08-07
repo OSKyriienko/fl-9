@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box; }
+
+section h1, section h4 {
+  color: #f77850;
+  text-align: right;
+  text-transform: uppercase;
+  margin: 0; }
+
+section p {
+  margin-top: 0;
+  font-size: 16px; }
+
+body {
+  background: #eeeeee;
+  font-family: "Book Antiqua";
+  color: #79797b;
+  padding: 0 30px;
+  margin: 0; }
+
+header {
+  display: flex; }
+  header .logo {
+    flex-basis: 55%;
+    align-items: flex-end; }
+    header .logo img {
+      width: 100%; }
+  header nav {
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    padding-bottom: 50px; }
+    header nav a {
+      padding: 20px 0;
+      text-decoration: none;
+      color: #f77850;
+      text-transform: uppercase;
+      border-bottom: 1px solid #8ea0aa;
+      border-top: 1px solid #8ea0aa;
+      flex-basis: 100%;
+      font-weight: bold; }
+
+.toolbar {
+  text-align: end; }
+  .toolbar input[type=text] {
+    border: 2px solid #f77850;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: inherit; }
+    .toolbar input[type=text]::placeholder {
+      color: #f77850;
+      font-weight: bold; }
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start; }
+  .post-list article {
+    width: 49%;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 20px; }
+    .post-list article img {
+      width: 100%; }
+    .post-list article .post-description {
+      color: #d2d7da;
+      margin-top: 10px;
+      font-size: 14px; }
+    .post-list article h3 {
+      color: #627b8a;
+      text-transform: uppercase;
+      border-top: 1px solid #627b8a;
+      padding-top: 5px;
+      font-size: 22px;
+      margin-bottom: 0; }
+    .post-list article p {
+      line-height: 1.5em; }
+
+section.about img {
+  width: 100%;
+  margin-bottom: 40px; }
+
+section.contact-form h1 {
+  font-size: 32px; }
+section.contact-form h4 {
+  font-size: 18px; }
+section.contact-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; }
+  section.contact-form form input, section.contact-form form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d2d7da;
+    background-color: inherit;
+    margin-top: 15px;
+    font: 15px Arial; }
+  section.contact-form form button {
+    width: 20%;
+    max-width: 200px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #f77850;
+    border: 1px solid #f77850;
+    margin-top: 15px; }
+
+footer span {
+  font-size: 14px; }

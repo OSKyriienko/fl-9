@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+section h1, section h4 {
+  color: $headerSectionColor;
+  text-align: right;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+section p {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+body {
+  background: $bodyBGColor;
+  font-family: $fontFamily;
+  color: $fontColor;
+  padding: 0 30px;
+  margin: 0;
+}
+
+header {
+  display: flex;
+
+  .logo {
+    flex-basis: 55%;
+    align-items: flex-end;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  nav {
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    padding-bottom: 50px;
+
+    a {
+      padding: 20px 0;
+      text-decoration: none;
+      color: $colorNavMenu;
+      text-transform: uppercase;
+      border-bottom: $borderSizeNav solid #8ea0aa;
+      border-top: $borderSizeNav solid #8ea0aa;
+      flex-basis: 100%;
+      font-weight: $fontWeightNav;
+    }
+  }
+}
+
+.toolbar {
+  text-align: end;
+
+  input[type=text] {
+    border: 2px solid $colorNavMenu;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: inherit;
+
+    &::placeholder {
+      color:$colorNavMenu;
+      font-weight: bold;
+    }
+  }
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  article {
+    width: 49%;
+    padding: 10px;
+    background-color: $articleBGColor;
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+    }
+
+    .post-description {
+      color: $postDescriptionColor;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    h3 {
+      color: $h3Color;
+      text-transform: uppercase;
+      border-top: $borderTopSize solid $h3Color;
+      padding-top: 5px;
+      font-size: $h3FontSize;
+      margin-bottom: 0;
+    }
+
+    p {
+      line-height: 1.5em;
+    }
+   }
+}
+
+section.about {
+  img {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+section.contact-form {
+  h1 {
+    font-size: $fontSizeh1ContactForm;
+  }
+  h4 {
+    font-size: $fontSizeh4ContactForm;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    input, textarea {
+      width: 100%;
+      padding: 15px;
+      border: $borderTopSize solid $borderTopColor;
+      background-color: inherit;
+      margin-top: 15px;
+      font: 15px Arial;
+    }
+
+    button {
+      width: 20%;
+      max-width: 200px;
+      padding: 10px;
+      color: #ffffff;
+      background-color: $buttonColor;
+      border: 1px solid $buttonColor;
+      margin-top: 15px;
+    }
+
+  }
+}
+
+footer span {
+  font-size: 14px;
+}
+
+
+
