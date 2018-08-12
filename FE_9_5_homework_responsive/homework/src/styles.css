@@ -1,0 +1,188 @@
+/*
+ * Feel free to change name of colors if you need it
+ * Feel free to add new colors if you need it
+ */
+/*:root {
+  --bg-color--dark: #0a1223;
+  --bg-color--light: #fff;
+  --link: #5d5d5d;
+  --link--active: #54597d;
+  --link--hover: #54597d;
+  --article-title: #ddd;
+  --article-title--dark: #000;
+  --thumbnail--description: #5d5d5d;
+*/
+  /* These styles are needed only for media query max-width: 575px */
+
+  /* The 'Up' button (circle button at right bottom corner) */
+/*  --btn-color: #fff;
+  --btn-bg-color: #5ebcff;
+
+  --navigation-border-bottom: #ddd;
+  --thumbnail-title: #484747;
+}
+*/
+/* Your styles go here */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #0a1223;
+  padding: 15px 30px;
+}
+
+header nav{
+  display: flex;
+  justify-content: flex-end;
+}
+
+header nav a {
+  color: #5d5d5d;
+  padding: 0 15px;
+  text-decoration: none;
+}
+
+header nav a.active {
+  color: #54597d;
+}
+
+header nav a:hover {
+  color: #54597d;
+}
+
+h1 {
+  text-align: center;
+  margin: 100px 0;
+  color: #ffffff;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 40px;
+}
+
+main section:nth-of-type(odd) {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+main section:nth-of-type(even) {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+main section > div {
+  width: 50%;
+}
+
+main h2 {
+  color: #ffffff;
+  background: linear-gradient(to right, #ffffff, #5d5d5d);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section.moon img {
+  width: 100%;
+  margin: 15px 0;
+}
+
+main p {
+  font-size: 13px;
+  text-align: justify;
+  text-indent: 15px;
+  color: #5d5d5d;
+}
+
+.main-up {
+  display: none;
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 991px){
+
+  header nav{
+    justify-content: center;
+  }
+
+  main section:nth-of-type(even), main section:nth-of-type(odd) {
+    flex-direction: column;
+    margin: 10px 40px;
+  }
+
+  main section > div {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  position: relative;
+}
+
+  header nav {
+    flex-direction: column;
+  }
+
+  header nav a {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px;
+  }
+
+  header nav a.active {
+    font-weight: bold;
+  }
+
+  h1 {
+    color: #000000;
+    padding: 0 20px;
+  }
+
+  main {
+    margin: 70px 25px;
+  }
+
+  main section:nth-of-type(even), main section:nth-of-type(odd) {
+    flex-direction: column;
+    margin: 10px 40px;
+  }
+
+  main section > div {
+    width: 100%;
+  }
+
+  main .moon h2 {
+    color: #484747;
+    -webkit-text-fill-color: currentcolor;
+  }
+
+  .main-up {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    line-height: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #5ebcff;
+    box-shadow: 10px 10px 10px #dddddd;
+  }
+
+  .main-up a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
