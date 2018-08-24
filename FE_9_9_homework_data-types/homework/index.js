@@ -59,5 +59,6 @@ function showFormattedDate(date) {
     let day = date.getDate();
     let month = arr[date.getMonth()];
     let year = date.getFullYear();
-    console.log(`It is ${day} of ${month}, ${year}`);
+    let formattedDate = `It is ${day} of ${month}, ${year}`;
+    return formattedDate;
 }
