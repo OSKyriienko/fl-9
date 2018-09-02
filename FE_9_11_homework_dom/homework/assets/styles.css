@@ -1,0 +1,104 @@
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapperContent {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 520px;
+    border: 1px solid #000000;
+    padding: 20px;
+}
+
+.header {
+   margin: 0 auto;
+   font-family: Arial;
+   font-weight: normal;
+}
+
+.caption {
+    text-align: center;
+}
+
+.warning {
+    opacity: 0;
+    color: red;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapperInputAction {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    padding: 15px 0 15px 15px;
+    border-bottom: 2px solid #000000;
+}
+
+.listActions {
+    margin-top: 10px;
+}
+
+.listRowElem {
+    display: flex;
+    padding-left: 15px;
+    position: relative;
+}
+
+.inputAction {
+    width: 94%;
+    padding: 0;
+    margin: 2px 0;
+}
+
+.btnAddAction, .btnRemoveAction {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: #ffffff;
+}
+
+.btnRemoveAction {
+    margin-left: auto;
+}
+
+.iconNo, .iconYes {
+    position: absolute;
+}
+
+.chkElem, .iconYes {
+    display: none;
+}
+
+.chkElem:checked ~ .iconNo {
+    display: none;
+}
+
+.chkElem:checked ~ .iconYes {
+    display: inline-block;
+}
+
+.action {
+    position: absolute;
+    left: 40px;
+    top: 2px;
+    vertical-align: bottom;
+}
+
+.paw {
+    margin-top: auto;
+    text-align: center;
+}
+.imgPaw {
+    width: 50px;
+    height: 50px;
+}

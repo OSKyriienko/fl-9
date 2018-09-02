@@ -1,0 +1,97 @@
+const MAX_ACTIONS = 10;
+
+const createElement = (tag, parent, className) => {
+    const elem = document.createElement(tag);
+    parent.appendChild(elem);
+    elem.className = className;
+    return elem;
+};
+
+const addNewAction = () => {
+    const listRowElem = createElement('div', listActions, 'listRowElem');
+    const todoElem = createElement('label', listRowElem, 'todoElem');
+    todoElem.draggable = true;
+    todoElem.addEventListener('dragstart', dragStartElem);
+    let countAction = document.querySelectorAll('.listRowElem');
+    todoElem.id = 'key' + countAction.length;
+    const chkElem = createElement('input', todoElem, 'chkElem');
+    chkElem.type = 'checkbox';
+    const iconYes = createElement('span', todoElem, 'iconYes');
+    iconYes.innerHTML = '<i class="material-icons">check_box</i>';
+    const iconNo = createElement('span', todoElem, 'iconNo');
+    iconNo.innerHTML = '<i class="material-icons">check_box_outline_blank</i>';
+    const action = createElement('span', todoElem, 'action');
+    action.textContent = inputAction.value;
+    const btnRemoveAction = createElement('button', listRowElem, 'btnRemoveAction');
+    btnRemoveAction.innerHTML = '<i class="material-icons">delete</i>';
+    btnRemoveAction.addEventListener('click', removeAction);
+    let amount = document.querySelectorAll('.listRowElem');
+    if (amount.length === MAX_ACTIONS) {
+      btnAddAction.disabled = true;
+      const warning = document.querySelector('.warning');
+      warning.style.opacity = 1;
+    }
+};
+
+const removeAction = event => {
+    const parent = event.target.parentElement.parentElement;
+    parent.remove();
+    let amount = document.querySelectorAll('.listRowElem');
+    if (amount.length < MAX_ACTIONS) {
+    btnAddAction.disabled = false;
+    const warning = document.querySelector('.warning');
+    warning.style.opacity = 0;
+  }
+};
+
+const disableAddAction = () => {
+  btnAddAction.disabled = !inputAction.value;
+};
+
+const wrapperContent = document.querySelector('.wrapperContent');
+const content = createElement('div', wrapperContent, 'content');
+const wrapperInputAction = createElement('div', content, 'wrapperInputAction');
+const inputAction = createElement('input', wrapperInputAction, 'inputAction');
+inputAction.addEventListener('keyup', disableAddAction);
+inputAction.placeholder = 'Add New Action';
+const btnAddAction = createElement('button', wrapperInputAction, 'btnAddAction');
+btnAddAction.disabled = true;
+btnAddAction.innerHTML = '<i class="material-icons">add_box</i>';
+const listActions = createElement('div', content, 'listActions');
+btnAddAction.addEventListener('click', addNewAction);
+const paw = createElement('div', wrapperContent, 'paw');
+const imgPaw = createElement('img', paw, 'imgPaw');
+imgPaw.src = 'assets/img/cat.png';
+
+const dragStartElem = event => {
+  event.dataTransfer.effectAllowed='move';
+  event.dataTransfer.setData('elem', event.target.id);
+  console.log('Temp id', event.target.id);
+};
+
+listActions.addEventListener('dragenter' , event => {
+  event.preventDefault();
+  return true;
+});
+
+listActions.addEventListener('dragover' , event => {
+  event.preventDefault();
+});
+
+listActions.addEventListener('drop' , event => {
+  let data = event.dataTransfer.getData('elem');
+  let sourceElem = event.target.closest('.listRowElem');
+  let destElem = document.getElementById(data).parentElement;
+  event.stopPropagation();
+  let listAct = document.querySelectorAll('.listActions .listRowElem');
+  let arrListAct = [...listAct];
+  let pos1 = arrListAct.indexOf(destElem);
+  let pos2 = arrListAct.indexOf(sourceElem);
+  if (pos1 < pos2) {
+    sourceElem.parentElement.insertBefore(destElem, sourceElem.nextSibling);
+  } else {
+    sourceElem.parentElement.insertBefore(destElem, sourceElem);
+  }
+});
+
+
