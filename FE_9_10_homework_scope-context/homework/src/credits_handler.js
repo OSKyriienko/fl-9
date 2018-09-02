@@ -3,6 +3,7 @@ const userCard = (key) => {
     let transactionLimit = 100;
     let historyLogs = [];
     const COMMISSION = 0.005;
+    const ROUNDING = 2;
 
     const getCardOptions = () => {
         return { key, balance, transactionLimit, historyLogs }
@@ -20,7 +21,7 @@ const userCard = (key) => {
     const takeCredits = (credits) => {
         if ( balance >= credits ) {
             if ( transactionLimit >= credits) {
-                balance -= credits;
+                balance = Number((balance - credits).toFixed(ROUNDING));
                 historyLogs.push({
                     operationType: 'Withdrawal of Credits',
                     credits: credits,
@@ -46,7 +47,7 @@ const userCard = (key) => {
     const transferCredits = (credits, card) => {
         if ( balance >= credits + credits*COMMISSION ) {
             if ( transactionLimit >= credits ) {
-                takeCredits(credits + credits*COMMISSION);
+                takeCredits(Number(credits + credits*COMMISSION).toFixed(ROUNDING));
                 card.putCredits(credits);
             } else {
                 console.log('Your limit has been exceeded');
