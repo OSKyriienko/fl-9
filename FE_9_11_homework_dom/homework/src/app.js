@@ -9,10 +9,9 @@ const createElement = (tag, parent, className) => {
 
 const addNewAction = () => {
     const listRowElem = createElement('div', listActions, 'listRowElem');
+    let countAction = document.querySelectorAll('.listRowElem');
     const todoElem = createElement('label', listRowElem, 'todoElem');
     todoElem.draggable = true;
-    todoElem.addEventListener('dragstart', dragStartElem);
-    let countAction = document.querySelectorAll('.listRowElem');
     todoElem.id = 'key' + countAction.length;
     const chkElem = createElement('input', todoElem, 'chkElem');
     chkElem.type = 'checkbox';
@@ -31,6 +30,8 @@ const addNewAction = () => {
       const warning = document.querySelector('.warning');
       warning.style.opacity = 1;
     }
+    inputAction.value = '';
+    btnAddAction.disabled = true;
 };
 
 const removeAction = event => {
@@ -63,34 +64,60 @@ const paw = createElement('div', wrapperContent, 'paw');
 const imgPaw = createElement('img', paw, 'imgPaw');
 imgPaw.src = 'assets/img/cat.png';
 
-const dragStartElem = event => {
+listActions.addEventListener('dragstart', event => {
   event.dataTransfer.effectAllowed='move';
-  event.dataTransfer.setData('elem', event.target.id);
-  console.log('Temp id', event.target.id);
-};
-
-listActions.addEventListener('dragenter' , event => {
-  event.preventDefault();
-  return true;
+  event.dataTransfer.setData('text', event.target.id);
+  event.target.closest('.listRowElem').classList.add('over');
 });
 
-listActions.addEventListener('dragover' , event => {
+listActions.addEventListener('dragenter', event => {
   event.preventDefault();
+  return false;
 });
 
-listActions.addEventListener('drop' , event => {
-  let data = event.dataTransfer.getData('elem');
-  let sourceElem = event.target.closest('.listRowElem');
-  let destElem = document.getElementById(data).parentElement;
-  event.stopPropagation();
+listActions.addEventListener('dragleave', event => {
+  event.preventDefault();
+  event.target.closest('.listRowElem').classList.remove('over');
+  return false;
+});
+
+listActions.addEventListener('dragend', event => {
+  event.preventDefault();
   let listAct = document.querySelectorAll('.listActions .listRowElem');
-  let arrListAct = [...listAct];
-  let pos1 = arrListAct.indexOf(destElem);
-  let pos2 = arrListAct.indexOf(sourceElem);
-  if (pos1 < pos2) {
-    sourceElem.parentElement.insertBefore(destElem, sourceElem.nextSibling);
-  } else {
-    sourceElem.parentElement.insertBefore(destElem, sourceElem);
+  for ( let i = 0; i < listAct.length; i++ ) {
+    listAct[i].classList.remove('over');
+  }
+  return false;
+});
+
+listActions.addEventListener('dragover', event => {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  event.target.closest('.listRowElem').classList.add('over');
+  return false;
+});
+
+listActions.addEventListener('drop', event => {
+  try {
+    let data = event.dataTransfer.getData('text');
+    let sourceElem = event.target.closest('.listRowElem');
+    let destElem = document.getElementById(data).parentElement;
+    event.stopPropagation();
+    let listAct = document.querySelectorAll('.listActions .listRowElem');
+    let arrListAct = [...listAct];
+    let pos1 = arrListAct.indexOf(destElem);
+    let pos2 = arrListAct.indexOf(sourceElem);
+    if (pos1 < pos2) {
+      sourceElem.parentElement.insertBefore(destElem, sourceElem.nextSibling);
+    } else {
+      sourceElem.parentElement.insertBefore(destElem, sourceElem);
+    }
+  } catch (error) {
+    let listAct = document.querySelectorAll('.listActions .listRowElem');
+    for ( let i = 0; i < listAct.length; i++ ) {
+      listAct[i].classList.remove('over');
+    }
+    alert('Pull over only Action at list');
   }
 });
 
