@@ -7,12 +7,18 @@ const createElement = (tag, parent, className) => {
     return elem;
 };
 
+const setIconYes = (event) => {
+  event.target.closest('.todoElem').firstElementChild.nextElementSibling.style.display = 'inline-block';
+  event.target.closest('.todoElem').lastElementChild.previousElementSibling.style.display = 'none';
+};
+
 const addNewAction = () => {
     const listRowElem = createElement('div', listActions, 'listRowElem');
     let countAction = document.querySelectorAll('.listRowElem');
     const todoElem = createElement('label', listRowElem, 'todoElem');
     todoElem.draggable = true;
     todoElem.id = 'key' + countAction.length;
+    todoElem.addEventListener('click', setIconYes);
     const chkElem = createElement('input', todoElem, 'chkElem');
     chkElem.type = 'checkbox';
     const iconYes = createElement('span', todoElem, 'iconYes');
@@ -46,7 +52,7 @@ const removeAction = event => {
 };
 
 const disableAddAction = () => {
-  btnAddAction.disabled = !inputAction.value;
+  btnAddAction.disabled = !inputAction.value.trim();
 };
 
 const wrapperContent = document.querySelector('.wrapperContent');

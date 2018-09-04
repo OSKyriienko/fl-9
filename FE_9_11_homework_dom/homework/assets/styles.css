@@ -54,6 +54,10 @@
     position: relative;
 }
 
+.listRowElem.over {
+    border: 2px dashed #ff0000;
+}
+
 .inputAction {
     width: 94%;
     padding: 0;
@@ -77,14 +81,6 @@
 
 .chkElem, .iconYes {
     display: none;
-}
-
-.chkElem:checked ~ .iconNo {
-    display: none;
-}
-
-.chkElem:checked ~ .iconYes {
-    display: inline-block;
 }
 
 .action {
