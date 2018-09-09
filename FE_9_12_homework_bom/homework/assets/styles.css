@@ -1,0 +1,61 @@
+/* Your styles go here */
+.wrapper, .wrapperTask, .wrapperModifyTask {
+    width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnAddNewTask {
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 20px;
+    width: 200px;
+}
+
+.emptyMessage {
+    font-size: 20px;
+}
+
+.listTasks {
+    margin-top: 30px;
+    width: 300px;
+}
+
+.todoElem {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.action {
+  line-height: 35px;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.inputTask {
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 35px;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 0 5px;
+}
+
+.btnWrapper {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+}
+
+.btnWrapper button {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
